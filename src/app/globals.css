@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   BRAND TOKENS — Centralised for easy swap
+   Replace HEX values here to update the
+   entire site palette.
+   ───────────────────────────────────────── */
+:root {
+  --brand-purple: #5b2d8b;
+  --brand-lilac: #9b7edc;
+  --brand-rose: #e8c7e8;
+
+  --ink: #2b2433;
+  --ink-muted: #6e647a;
+
+  --paper: #ffffff;
+  --paper-soft: #f8f5fa;
+
+  --accent: #7a5ccf;
+  --accent-soft: rgba(122, 92, 207, 0.15);
+}
+
+/* ─────── Base resets ─────── */
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-paper text-ink;
+    font-family: var(--font-dm-sans), system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--brand-purple);
+  }
+
+  /* Respect prefers-reduced-motion globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ─────── Utility classes ─────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  /* Standardised interactive element states */
+  .interactive-lift {
+    @apply transition-all duration-300;
+  }
+  .interactive-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(91, 45, 139, 0.1);
+  }
+  .interactive-lift:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(91, 45, 139, 0.06);
+  }
+  .interactive-lift:focus-visible {
+    @apply outline-none ring-2 ring-offset-2;
+    --tw-ring-color: var(--brand-purple);
+    box-shadow: 0 0 8px rgba(91, 45, 139, 0.3);
+  }
+}
+
+/* ─────── Smooth scroll via Lenis ─────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ─────── Article prose ─────── */
+.prose-custom h2 {
+  @apply mb-4 mt-10 font-display text-2xl font-medium text-ink;
+}
+.prose-custom h2:first-child {
+  @apply mt-0;
+}
+.prose-custom h3 {
+  @apply mb-3 mt-6 text-lg font-medium text-ink;
+}
+.prose-custom p {
+  @apply mb-4 text-base leading-relaxed text-ink-muted;
+}
+.prose-custom ul {
+  @apply mb-4 space-y-2 pl-0;
+}
+.prose-custom li {
+  @apply flex items-start gap-2 text-base leading-relaxed text-ink-muted;
+}
+.prose-custom li::before {
+  content: '';
+  @apply mt-2.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full;
+  background: var(--brand-purple);
+}
+.prose-custom strong {
+  @apply font-semibold text-ink;
+}
+.prose-custom table {
+  @apply w-full border-collapse;
+}
+.prose-custom table th {
+  @apply py-3 text-left text-sm font-medium text-ink;
+  border-bottom: 1px solid rgba(155, 126, 220, 0.2);
+}
+.prose-custom table td {
+  @apply py-2.5 text-sm text-ink-muted;
+  border-bottom: 1px solid rgba(155, 126, 220, 0.1);
+}
