@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_CO',
     siteName: 'NeuroCarolina Traslaviña',
-    // TODO: add real OG image → images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
   },
 };
 
