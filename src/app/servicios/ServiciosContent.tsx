@@ -21,56 +21,49 @@ const SERVICIOS = [
   {
     title: 'Valoración Neuropsicológica',
     description:
-      'Análisis especializado de las funciones cerebrales y su impacto en el comportamiento cotidiano. Permite detectar alteraciones cognitivas asociadas a condiciones neurológicas, psiquiátricas o del desarrollo.',
+      'Proceso clínico estructurado que incluye anamnesis detallada, análisis de antecedentes, formulación de hipótesis diagnóstica, selección de pruebas estandarizadas e integración de resultados.',
     details: [
-      'Evaluación de perfil cognitivo',
-      'Identificación de fortalezas y dificultades',
-      'Orientación para intervención personalizada',
+      'Anamnesis detallada y revisión de historia clínica',
+      'Análisis de antecedentes médicos, neurológicos, académicos y psicosociales',
+      'Formulación de hipótesis diagnóstica',
+      'Selección y aplicación de pruebas neuropsicológicas estandarizadas',
+      'Integración de resultados y elaboración de informe clínico',
     ],
     whatsappMessage: 'Hola, me interesa conocer más sobre la Valoración Neuropsicológica',
   },
   {
-    title: 'Evaluación Neuropsicológica',
-    description:
-      'Proceso clínico detallado que examina memoria, atención, lenguaje, funciones ejecutivas, habilidades visoespaciales y velocidad de procesamiento, utilizando instrumentos validados y adaptados.',
-    details: [
-      'Pruebas para evaluar: capacidad intelectual, TDAH, trastorno del espectro autista, epilepsia, trastornos neurocognitivos y demencias',
-      'Batería de pruebas estandarizadas',
-      'Correlación clínica de resultados',
-      'Informe completo y plan de acción',
-    ],
-    whatsappMessage: 'Hola, me interesa conocer más sobre la Evaluación Neuropsicológica',
-  },
-  {
     title: 'Prueba Cognitiva',
     description:
-      'Aplicación de pruebas específicas y estandarizadas para medir el rendimiento en dominios cognitivos puntuales. Ideal para seguimiento, screening o complemento de evaluaciones previas.',
+      'Evaluación del funcionamiento intelectual global mediante escalas estandarizadas.',
     details: [
-      'Screening cognitivo rápido',
-      'Seguimiento de procesos terapéuticos',
-      'Comparación con valores normativos',
+      'Evaluación de funcionamiento intelectual global (CI)',
+      'Aplicación de escalas estandarizadas (WIPPSI, WISC, WAIS u otras según edad)',,
+      'Seguimiento de evolución clínica',
+      'Comparación con datos normativos',
     ],
     whatsappMessage: 'Hola, me interesa conocer más sobre la Prueba Cognitiva',
   },
   {
     title: 'Estimulación Cognitiva',
     description:
-      'Programas personalizados de actividades y ejercicios diseñados para potenciar y mantener las capacidades mentales. Beneficia a personas en cualquier etapa de la vida.',
+      'Programa personalizado de entrenamiento en memoria, atención y funciones ejecutivas según resultados de evaluación.',
     details: [
-      'Ejercicios de memoria y atención',
-      'Entrenamiento en funciones ejecutivas',
-      'Sesiones adaptadas a cada persona',
+      'Programa personalizado según resultados de evaluación',
+      'Entrenamiento en memoria, atención y funciones ejecutivas',
+      'Rehabilitación de habilidades cognitivas afectadas',
+      'Plan terapéutico según perfil neuropsicológico',
     ],
     whatsappMessage: 'Hola, me interesa conocer más sobre la Estimulación Cognitiva',
   },
   {
     title: 'Rehabilitación Neuropsicológica',
     description:
-      'Intervención terapéutica estructurada para recuperar o compensar funciones cognitivas afectadas tras lesiones cerebrales, enfermedades neurológicas o procesos degenerativos.',
+      'Intervención terapéutica basada en evaluación neuropsicológica con estrategias restaurativas y compensatorias.',
     details: [
-      'Plan de rehabilitación individualizado',
-      'Estrategias compensatorias',
-      'Trabajo conjunto con familia y equipo médico',
+      'Diseño de plan terapéutico basado en evaluación neuropsicológica',
+      'Intervención en memoria, atención y funciones ejecutivas',
+      'Estrategias restaurativas y compensatorias',
+      'Trabajo interdisciplinario con familia y equipo médico',
     ],
     whatsappMessage: 'Hola, me interesa conocer más sobre la Rehabilitación Neuropsicológica',
   },

@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroBackground from '@/components/HeroBackground';
@@ -30,11 +31,13 @@ const SERVICES = [
   {
     title: 'Valoración Neuropsicológica',
     description:
-      'Análisis especializado de las funciones cerebrales y su impacto en el comportamiento cotidiano. Permite detectar alteraciones cognitivas asociadas a condiciones neurológicas, psiquiátricas o del desarrollo.',
+      'Proceso clínico estructurado que incluye anamnesis detallada, análisis de antecedentes, formulación de hipótesis diagnóstica, selección de pruebas estandarizadas e integración de resultados.',
     details: [
-      'Evaluación de perfil cognitivo',
-      'Identificación de fortalezas y dificultades',
-      'Orientación para intervención personalizada',
+      'Anamnesis detallada y revisión de historia clínica',
+      'Análisis de antecedentes médicos, neurológicos, académicos y psicosociales',
+      'Formulación de hipótesis diagnóstica',
+      'Selección y aplicación de pruebas neuropsicológicas estandarizadas',
+      'Integración de resultados y elaboración de informe clínico',
     ],
     icon: <BrainIcon />,
     whatsappMessage: 'Hola, me interesa conocer más sobre la Valoración Neuropsicológica',
@@ -42,7 +45,7 @@ const SERVICES = [
   {
     title: 'Evaluación Neuropsicológica',
     description:
-      'Proceso clínico detallado que examina memoria, atención, lenguaje, funciones ejecutivas, habilidades visoespaciales y velocidad de procesamiento, utilizando instrumentos validados.',
+      'Proceso clínico detallado que examina memoria, atención, lenguaje, funciones ejecutivas, habilidades visoespaciales y velocidad de procesamiento.',
     details: [
       'Pruebas para evaluar: capacidad intelectual, TDAH, TEA, epilepsia, trastornos neurocognitivos y demencias',
       'Batería de pruebas estandarizadas',
@@ -55,11 +58,12 @@ const SERVICES = [
   {
     title: 'Prueba Cognitiva',
     description:
-      'Aplicación de pruebas específicas y estandarizadas para medir el rendimiento en dominios cognitivos puntuales. Ideal para seguimiento, screening o complemento de evaluaciones previas.',
+      'Evaluación del funcionamiento intelectual global mediante escalas estandarizadas.',
     details: [
-      'Screening cognitivo rápido',
-      'Seguimiento de procesos terapéuticos',
-      'Comparación con valores normativos',
+      'Evaluación de funcionamiento intelectual global (CI)',
+      'Aplicación de escalas estandarizadas (WIPPSI, WISC, WAIS u otras según edad)',
+      'Seguimiento de evolución clínica',
+      'Comparación con datos normativos',
     ],
     icon: <TestIcon />,
     whatsappMessage: 'Hola, me interesa conocer más sobre la Prueba Cognitiva',
@@ -67,11 +71,12 @@ const SERVICES = [
   {
     title: 'Estimulación Cognitiva',
     description:
-      'Programas personalizados de actividades y ejercicios diseñados para potenciar y mantener las capacidades mentales. Beneficia a personas en cualquier etapa de la vida.',
+      'Programa personalizado de entrenamiento en memoria, atención y funciones ejecutivas según resultados de evaluación.',
     details: [
-      'Ejercicios de memoria y atención',
-      'Entrenamiento en funciones ejecutivas',
-      'Sesiones adaptadas a cada persona',
+      'Programa personalizado según resultados de evaluación',
+      'Entrenamiento en memoria, atención y funciones ejecutivas',
+      'Rehabilitación de habilidades cognitivas afectadas',
+      'Plan terapéutico según perfil neuropsicológico',
     ],
     icon: <SparklesIcon />,
     whatsappMessage: 'Hola, me interesa conocer más sobre la Estimulación Cognitiva',
@@ -79,11 +84,12 @@ const SERVICES = [
   {
     title: 'Rehabilitación Neuropsicológica',
     description:
-      'Intervención terapéutica estructurada para recuperar o compensar funciones cognitivas afectadas tras lesiones cerebrales, enfermedades neurológicas o procesos degenerativos.',
+      'Intervención terapéutica basada en evaluación neuropsicológica con estrategias restaurativas y compensatorias.',
     details: [
-      'Plan de rehabilitación individualizado',
-      'Estrategias compensatorias',
-      'Trabajo conjunto con familia y equipo médico',
+      'Diseño de plan terapéutico basado en evaluación neuropsicológica',
+      'Intervención en memoria, atención y funciones ejecutivas',
+      'Estrategias restaurativas y compensatorias',
+      'Trabajo interdisciplinario con familia y equipo médico',
     ],
     icon: <HeartIcon />,
     whatsappMessage: 'Hola, me interesa conocer más sobre la Rehabilitación Neuropsicológica',
@@ -169,8 +175,55 @@ const FAQS: FAQItem[] = [
 /* ─── Page ─── */
 
 export default function HomePage() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    // Mostrar popup después de que termine la animación de entrada (1.5 segundos)
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
+      {/* Popup */}
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+            onClick={() => setShowPopup(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-md"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute -top-10 right-0 text-white hover:text-brand-lilac"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+              <Image
+                src="/brand/POPUP4.jpeg"
+                alt="Popup NeuroCarolina"
+                width={500}
+                height={600}
+                className="rounded-xl shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ═══ HERO ═══ */}
       <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-paper-soft">
         <HeroBackground />
